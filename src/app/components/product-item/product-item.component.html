@@ -1,0 +1,8 @@
+<div class="card" (click)="getProductDetails(product)">
+  <img [src]="product?.url" class="card-img-top" [alt]="product?.name">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{product?.name}}</h5>
+    <p class="card-text">{{product?.description}}</p>
+    <a routerLink="/cart" class="btn btn-warning">add to cart</a>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.navbar {
+  background-color: #7765ff;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  font-weight: bold;
+  text-transform: capitalize;
+}
