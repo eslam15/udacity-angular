@@ -1,0 +1,60 @@
+.card-text {
+  margin-bottom: 8px;
+}
+
+.card-price {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #7765ff;
+}
+
+.card-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.card-amount .form-control {
+  width: 90px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #7765ff;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.btn {
+  width: 90px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn:disabled {
+  pointer-events: unset;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-back {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #7765ff;
+  text-transform: capitalize;
+}
+

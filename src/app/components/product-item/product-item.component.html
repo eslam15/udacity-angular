@@ -1,0 +1,19 @@
+<div class="product-item card" (click)="getProductDetails(product)">
+  <img [src]="product?.url" class="card-img-top" [alt]="product?.name">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{product?.name}}</h5>
+    <p class="card-text">{{product?.description}}</p>
+    <span class="card-price">{{product?.price | currency}}</span>
+    <div class="card-amount">
+      <label for="productAmount" class="form-label">Amount:</label>
+      <input type="number" class="form-control" id="productAmount" name="productAmount" min="0" 
+      (click)="$event.stopPropagation()" [(ngModel)]="product.amount">
+    </div>
+    <button type="button" class="btn btn-warning" [disabled]="!product?.amount" 
+      (click)="$event.stopPropagation();addToCart(product)">
+      add to cart
+    </button>
+  </div>
+</div>
+
+<app-alert-popup #addToCartAlert [bodyText]="addToCartBody" [headerText]="addToCartHeader"></app-alert-popup>
