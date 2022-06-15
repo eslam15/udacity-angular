@@ -52,9 +52,9 @@ export class CartComponent implements OnInit {
   }
 
   calculateCartTotal(): number {
-    this.cartItems.forEach((product: ProductInterface) => {
-      product.amount === 1 ? this.cartTotal += product.price : this.cartTotal += product.price * product.amount;
-    });
+    for (let product of this.cartItems) {
+      this.cartTotal += product.amount === 1 ? product.price : product.price * product.amount;
+    }
     return this.cartTotal;
   }
 
