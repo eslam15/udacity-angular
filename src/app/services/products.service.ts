@@ -40,4 +40,5 @@ export class ProductsService {
   confirmPayment(name: string, total: number) {
     localStorage.setItem('paymentDetails', JSON.stringify({'name': name, 'total': total}));
   }
+
 }

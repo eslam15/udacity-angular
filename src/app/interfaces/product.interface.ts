@@ -5,4 +5,5 @@ export interface ProductInterface {
   url: string;
   description: string;
   amount: number;
+  isSelected?: boolean;
 }
