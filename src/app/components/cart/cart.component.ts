@@ -58,14 +58,14 @@ export class CartComponent implements OnInit {
     return this.cartTotal;
   }
 
-  resetCartTotal () {
+  resetCartTotal (): void {
     this.cartTotal = 0;
     if (this.cartItems?.length) {
       this.calculateCartTotal();
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     localStorage.setItem('cartItems', JSON.stringify([]));
     this.productsService.confirmPayment(this.paymentFullName, this.cartTotal);
     this.router.navigateByUrl(this.confirmationUrl);
