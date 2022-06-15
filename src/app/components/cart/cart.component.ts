@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductInterface } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products.service';
 import { AlertPopupComponent } from '../alert-popup/alert-popup.component';
@@ -18,8 +19,9 @@ export class CartComponent implements OnInit {
   paymentCard: string = '';
   removedFromCartBody: string = '';
   removedFromCartHeader: string = '';
+  confirmationUrl: string = '/confirmation'
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCartItems();
@@ -50,8 +52,8 @@ export class CartComponent implements OnInit {
   }
 
   calculateCartTotal(): number {
-    this.cartItems.forEach((el: ProductInterface) => {
-      el.amount === 1 ? this.cartTotal += el.price : this.cartTotal += el.price * el.amount;
+    this.cartItems.forEach((product: ProductInterface) => {
+      product.amount === 1 ? this.cartTotal += product.price : this.cartTotal += product.price * product.amount;
     });
     return this.cartTotal;
   }
@@ -64,7 +66,9 @@ export class CartComponent implements OnInit {
   }
 
   onSubmit() {
-
+    localStorage.setItem('cartItems', JSON.stringify([]));
+    this.productsService.confirmPayment(this.paymentFullName, this.cartTotal);
+    this.router.navigateByUrl(this.confirmationUrl);
   }
 
 }

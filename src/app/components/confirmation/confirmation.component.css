@@ -1,0 +1,28 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 55px 0;
+}
+
+.confirmation img {
+  width: 150px;
+}
+
+.confirmation-info {
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.confirmation-info h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #7765ff;
+}
+
+.confirmation-info span {
+  color: #7765ff;
+  font-weight: bold;
+}

@@ -1,49 +1,51 @@
-<div *ngIf="cartItems?.length; else emptyCartMsg" class="cart">
-  <div class="cart-items">
-    <div *ngFor="let item of cartItems; let i = index" class="cart-item">
-      <img [src]="item?.url" [alt]="item?.name">
-      <div class="cart-item-info">
-        <h6 class="card-text">{{item?.name}}</h6>
-        <span class="card-price">{{item?.price | currency}}</span>
-        <div class="card-amount">
-          <label for="itemAmount" class="form-label">Amount:</label>
-          <input type="number" class="form-control" id="itemAmount" name="itemAmount" placeholder="0" min="0" 
-          (click)="$event.stopPropagation();onChangeAmount(item, i)" [(ngModel)]="item.amount">
+<div class="cart">
+  <div *ngIf="cartItems?.length; else emptyCartMsg" class="cart-wrapper">
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+        <img [src]="item?.url" [alt]="item?.name">
+        <div class="cart-item-info">
+          <h6 class="card-text">{{item?.name}}</h6>
+          <span class="card-price">{{item?.price | currency}}</span>
+          <div class="card-amount">
+            <label for="itemAmount" class="form-label">Amount:</label>
+            <input type="number" class="form-control" id="itemAmount" name="itemAmount" placeholder="0" min="0" 
+            (click)="$event.stopPropagation();onChangeAmount(item, i)" [(ngModel)]="item.amount">
+          </div>
+          <button class="btn btn-danger" [disabled]="item?.amount === 0" (click)="$event.stopPropagation();removeFromCart(item, i)">delete</button>
         </div>
-        <button class="btn btn-danger" [disabled]="item?.amount === 0" (click)="$event.stopPropagation();removeFromCart(item, i)">delete</button>
+      </div>
+      <div class="cart-total">
+        <span>Total: {{cartTotal | currency}}</span>
       </div>
     </div>
-    <div class="cart-total">
-      <span>Total: {{cartTotal | currency}}</span>
+    <div class="cart-payment">
+      <form #cartPaymentForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="cartPaymentName" class="form-label">Full name</label>
+          <input type="text" class="form-control" id="cartPaymentName" name="cartPaymentName" required 
+          minlength="3" [(ngModel)]="paymentFullName" placeholder="minimum 3 characters">
+        </div>
+        <div class="form-group">
+          <label for="cartPaymentAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="cartPaymentAddress" name="cartPaymentAddress" required 
+          minlength="6" [(ngModel)]="paymentAddress" placeholder="minimum 6 characters">
+        </div>
+        <div class="form-group">
+          <label for="cartPaymentCard" class="form-label">Credit card number</label>
+          <input type="text" class="form-control" id="cartPaymentCard" name="cartPaymentCard" required 
+          minlength="16" maxlength="16" [(ngModel)]="paymentCard" placeholder="16-digit number">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="cartPaymentForm.invalid">Submit</button>
+      </form>
     </div>
   </div>
-  <div class="cart-payment">
-    <form #cartPaymentForm="ngForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="cartPaymentName" class="form-label">Full name</label>
-        <input type="text" class="form-control" id="cartPaymentName" name="cartPaymentName" required 
-        minlength="3" [(ngModel)]="paymentFullName" placeholder="minimum 3 characters">
-      </div>
-      <div class="form-group">
-        <label for="cartPaymentAddress" class="form-label">Address</label>
-        <input type="text" class="form-control" id="cartPaymentAddress" name="cartPaymentAddress" required 
-        minlength="6" [(ngModel)]="paymentAddress" placeholder="minimum 6 characters">
-      </div>
-      <div class="form-group">
-        <label for="cartPaymentCard" class="form-label">Credit card number</label>
-        <input type="text" class="form-control" id="cartPaymentCard" name="cartPaymentCard" required 
-        minlength="16" maxlength="16" [(ngModel)]="paymentCard" placeholder="16-digit number">
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="cartPaymentForm.invalid">Submit</button>
-    </form>
-  </div>
+  <ng-template #emptyCartMsg>
+    <div class="cart-empty">
+      <div>No items in the cart yet!</div>
+      <a class="btn-back" routerLink="/">back to products list</a>
+    </div>
+  </ng-template>
 </div>
 
 <app-alert-popup #removeFromCartAlert [bodyText]="removedFromCartBody" [headerText]="removedFromCartHeader"></app-alert-popup>
 
-<ng-template #emptyCartMsg>
-  <div class="cart-empty">
-    <div>No items in the cart yet!</div>
-    <a class="btn-back" routerLink="/">back to products list</a>
-  </div>
-</ng-template>

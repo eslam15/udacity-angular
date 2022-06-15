@@ -23,7 +23,7 @@ export class ProductsService {
     ));
   }
 
-  updateCartItems (product: ProductInterface) {
+  updateCartItems(product: ProductInterface) {
     const CART_ITEMS = JSON.parse(localStorage.getItem('cartItems')!) || [];
     let isItemExist = CART_ITEMS.some((el: ProductInterface) => el.id === product.id);
     if (!isItemExist) {
@@ -35,5 +35,9 @@ export class ProductsService {
       }
     }
     localStorage.setItem('cartItems', JSON.stringify(CART_ITEMS));
+  }
+
+  confirmPayment(name: string, total: number) {
+    localStorage.setItem('paymentDetails', JSON.stringify({'name': name, 'total': total}));
   }
 }

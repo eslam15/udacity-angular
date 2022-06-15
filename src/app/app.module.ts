@@ -13,15 +13,17 @@ import { ProductItemDetailsComponent } from './components/product-item-details/p
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AlertPopupComponent } from './components/alert-popup/alert-popup.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CartComponent,
     ProductsListComponent,
     ProductItemComponent,
     ProductItemDetailsComponent,
+    CartComponent,
+    ConfirmationComponent,
     AlertPopupComponent
   ],
   imports: [

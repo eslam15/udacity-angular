@@ -1,1 +1,10 @@
-<p>confirmation works!</p>
+<div class="confirmation">
+  <img src="./assets/images/success.png" alt="Success">
+  <div class="confirmation-info">
+    <h1>Success!</h1>
+    <p>Thank you <span>{{paymentDetails?.name}}</span></p>
+    <p>Your order has been placed with a total of <span>{{paymentDetails?.total | currency}}</span></p>
+    <p>Please allow <span>1-3</span> business days(s) for shipping</p>
+    <a class="btn-back" (click)="clearPaymentDetails()" routerLink="/">back to products list</a>
+  </div>
+</div>

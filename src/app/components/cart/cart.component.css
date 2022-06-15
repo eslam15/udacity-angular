@@ -1,8 +1,11 @@
 .cart {
+  margin: 55px 0;
+}
+
+.cart-wrapper {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin: 55px 0;
 }
 
 .cart-item {
@@ -59,7 +62,6 @@
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  margin-top: 50px;
 }
 
 @media (max-width: 767.98px) {
