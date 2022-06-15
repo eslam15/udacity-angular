@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductInterface } from 'src/app/interfaces/product.interface';
+import { ProductsService } from 'src/app/services/products.service';
+import { AlertPopupComponent } from '../alert-popup/alert-popup.component';
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +9,62 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  @ViewChild('removeFromCartAlert', { static: false }) removeFromCartAlert: AlertPopupComponent = {} as AlertPopupComponent;
 
-  constructor() { }
+  cartItems: ProductInterface[] = [];
+  cartTotal: number = 0;
+  paymentFullName: string = '';
+  paymentAddress: string = '';
+  paymentCard: string = '';
+  removedFromCartBody: string = '';
+  removedFromCartHeader: string = '';
+
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
+    this.getCartItems();
+  }
+
+  getCartItems(): void {
+    this.cartItems = JSON.parse(localStorage.getItem('cartItems')!) || [];
+    if (this.cartItems?.length) {
+      this.calculateCartTotal();
+    }
+  }
+
+  onChangeAmount(cartItem: ProductInterface, itemIndex: number): void {
+    this.resetCartTotal();
+    this.productsService.updateCartItems(cartItem);
+    if (!cartItem?.amount) {
+      this.removeFromCart(cartItem, itemIndex);
+    }
+  }
+
+  removeFromCart(cartItem: ProductInterface, itemIndex: number): void {
+    this.removedFromCartBody = `${cartItem?.name} has been removed from cart successfully!`;
+    this.removedFromCartHeader = `Removed from cart`;
+    this.removeFromCartAlert.showModal(); 
+    this.cartItems.splice(itemIndex, 1);
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    this.resetCartTotal();
+  }
+
+  calculateCartTotal(): number {
+    this.cartItems.forEach((el: ProductInterface) => {
+      el.amount === 1 ? this.cartTotal += el.price : this.cartTotal += el.price * el.amount;
+    });
+    return this.cartTotal;
+  }
+
+  resetCartTotal () {
+    this.cartTotal = 0;
+    if (this.cartItems?.length) {
+      this.calculateCartTotal();
+    }
+  }
+
+  onSubmit() {
+
   }
 
 }

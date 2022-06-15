@@ -17,8 +17,9 @@ export class ProductsListComponent implements OnInit {
   }
 
   getProductsList(): void {
-    this.productsService.fetchProductsList().subscribe((res: ProductInterface[]) =>  {
+    this.productsService.fetchProductsList().subscribe((res: ProductInterface[]) => { 
       this.productsList = res;
+      this.productsList.map((el: ProductInterface) => { el.amount = 1 });
     });
   }
 

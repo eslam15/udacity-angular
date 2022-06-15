@@ -4,6 +4,7 @@ export class ProductModel {
     public name: string,
     public price: number,
     public url: string,
-    public description: string
+    public description: string,
+    public amount: number
   ) {}
 }

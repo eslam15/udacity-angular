@@ -9,13 +9,6 @@
 }
 
 .card .card-img-top {
-  max-height: 420px;
-}
-
-.btn {
-  text-transform: capitalize;
-}
-
-.btn:focus {
-  box-shadow: none;
+  max-height: 350px;
+  object-fit: cover;
 }

@@ -1,45 +1,77 @@
-img {
-  width: 100px;
-  border-radius: 10px;
-}
-
-.form-margin {
-  margin-bottom: 12px;
+.cart {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 55px 0;
 }
 
 .cart-item {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.cart-item-details {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: left;
-  margin-left: 80px;
+.cart-item:last-child {
+  margin-bottom: 0;
 }
 
-.number-input {
-  width: 80px;
-  text-align: center;
+.cart-item img {
+  height: 210px;
+  width: 100%;
+  object-fit: cover;
 }
 
-.cart-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 64px;
+.cart-item-info {
+  margin-left: 30px;
 }
 
-.cart-panel {
+.cart-total {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1.04px;
+}
+
+.cart-payment {
   margin-left: 50px;
-  margin-right: 50px;
 }
 
-.empty-cart-message {
+.cart-payment .form-group {
+  margin-bottom: 10px;
+}
+
+.cart-payment .form-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.cart-payment .form-control {
+  font-size: 12px;
+  color: #7765ff;
+}
+
+.cart-payment .btn {
+  margin-top: 10px;
+}
+
+.cart-empty {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: 64px;
+  font-size: 24px;
+  margin-top: 50px;
+}
+
+@media (max-width: 767.98px) {
+  .cart {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-payment {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 50px;
+    padding: 0 35px;
+  }
 }

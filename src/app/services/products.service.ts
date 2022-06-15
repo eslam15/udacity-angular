@@ -19,7 +19,21 @@ export class ProductsService {
 
   fetchProductDetails(productId: number): Observable<ProductModel> {
     return this.http.get<any>(this.APIUrl).pipe(
-      map(el => el.find((product: ProductInterface) => product.id === productId),
+      map(el => el.find((product: ProductInterface) => product?.id === productId),
     ));
+  }
+
+  updateCartItems (product: ProductInterface) {
+    const CART_ITEMS = JSON.parse(localStorage.getItem('cartItems')!) || [];
+    let isItemExist = CART_ITEMS.some((el: ProductInterface) => el.id === product.id);
+    if (!isItemExist) {
+      CART_ITEMS.push(product);
+    } else {
+      let currentItem = CART_ITEMS.find((el: ProductInterface) => el.id === product.id);
+      if (currentItem) {
+        currentItem.amount = product?.amount;
+      }
+    }
+    localStorage.setItem('cartItems', JSON.stringify(CART_ITEMS));
   }
 }

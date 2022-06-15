@@ -5,25 +5,24 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
+import { HeaderComponent } from './layout/header/header.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductItemDetailsComponent } from './components/product-item-details/product-item-details.component';
-import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import { HeaderComponent } from './layout/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { AlertPopupComponent } from './components/alert-popup/alert-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
+    HeaderComponent,
     CartComponent,
     ProductsListComponent,
     ProductItemComponent,
     ProductItemDetailsComponent,
-    ConfirmationComponent,
-    HeaderComponent
+    AlertPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
