@@ -31,7 +31,6 @@
   margin-right: 10px;
 }
 
-
 .form-control:focus {
   box-shadow: none;
   border-color: #ced4da;
@@ -60,5 +59,10 @@
   margin-top: 10px;
   color: #7765ff;
   text-transform: capitalize;
+}
+
+.error-msg {
+  font-size: 12px;
+  color: #d82e2e;
 }
 
