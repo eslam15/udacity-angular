@@ -20,6 +20,9 @@ export class CartComponent implements OnInit {
   removedFromCartBody: string = '';
   removedFromCartHeader: string = '';
   confirmationUrl: string = '/confirmation'
+  invalidName: boolean = false;
+  invalidAddress: boolean = false;
+  invalidCreditCard: boolean = false;
 
   constructor(private productsService: ProductsService, private router: Router) { }
 
@@ -71,4 +74,16 @@ export class CartComponent implements OnInit {
     this.router.navigateByUrl(this.confirmationUrl);
   }
 
+  validateName(name: string): void {
+    this.invalidName = name?.length < 3;
+  }
+
+  validateAddress(address: string): void {
+    this.invalidAddress = address?.length < 6;
+  }
+
+  validateCreditCard (cardNumber: string): void {
+    let numberRegEx = /[^0-9]/;
+    this.invalidCreditCard = numberRegEx.test(cardNumber) || cardNumber?.length < 16;
+  }
 }

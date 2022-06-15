@@ -48,12 +48,14 @@
 }
 
 .cart-payment .form-control {
+  width: 250px;
   font-size: 12px;
   color: #7765ff;
 }
 
 .cart-payment .btn {
-  margin-top: 10px;
+  display: block;
+  margin-top: 15px;
 }
 
 .cart-empty {
