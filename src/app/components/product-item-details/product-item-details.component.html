@@ -5,7 +5,7 @@
     <p class="card-text">{{productDetails?.description}}</p>
     <span class="card-price">{{productDetails?.price | currency}}</span>
     <div class="card-amount">
-      <label for="productDetailsAmount" class="form-label">Amount:</label>
+      <label for="productDetailsAmount" class="form-label">amount:</label>
       <input type="number" class="form-control" id="productDetailsAmount" name="productDetailsAmount" placeholder="0" min="0" (click)="$event.stopPropagation()" [(ngModel)]="productDetails.amount">
     </div>
     <button type="button" class="btn btn-warning" [disabled]="!productDetails?.amount" 

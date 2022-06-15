@@ -26,11 +26,11 @@ export class ProductItemComponent {
 
   constructor(private productsService: ProductsService, private router: Router) {}
 
-  getProductDetails(product: ProductInterface) {
+  getProductDetails(product: ProductInterface): void {
     this.router.navigateByUrl(`product-details/${product?.id}`);
   }
 
-  addToCart(product: ProductInterface) {
+  addToCart(product: ProductInterface): void {
     this.addToCartBody = `${product?.name} has been added to cart successfully!`;
     this.addToCartHeader = `Added to cart`;
     this.addToCartAlert.showModal();
