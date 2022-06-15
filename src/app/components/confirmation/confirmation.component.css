@@ -18,11 +18,11 @@
 
 .confirmation-info h1 {
   font-size: 50px;
-  font-weight: bold;
+  font-weight: 500;
   color: #7765ff;
 }
 
 .confirmation-info span {
   color: #7765ff;
-  font-weight: bold;
+  font-weight: 500;
 }

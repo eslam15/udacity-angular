@@ -18,4 +18,5 @@ export class ConfirmationComponent implements OnInit {
   clearPaymentDetails() {
     localStorage.setItem('paymentDetails', JSON.stringify({}));
   }
+
 }

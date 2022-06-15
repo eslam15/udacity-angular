@@ -17,7 +17,8 @@ export class ProductItemDetailsComponent implements OnInit {
     price: 0,
     url: '',
     description: '',
-    amount: 1
+    amount: 1,
+    isSelected: false
   };
   addToCartBody: string = '';
   addToCartHeader: string = '';

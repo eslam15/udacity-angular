@@ -1,5 +1,10 @@
-<div class="products-list">
-  <div *ngFor="let product of productsList" class="product-item">
-    <app-product-item [product]="product"></app-product-item>
+<div class="products-wrapper">
+  <div *ngIf="selectedProductsCount" class="products-count">
+    selected products: <span>{{selectedProductsCount}}</span>
+  </div>
+  <div class="products-list">
+    <div *ngFor="let product of productsList" class="product-item">
+      <app-product-item [product]="product" (onSelectProduct)="updateSelectedProductsCount()"></app-product-item>
+    </div>
   </div>
 </div>

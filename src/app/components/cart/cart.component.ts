@@ -86,4 +86,5 @@ export class CartComponent implements OnInit {
     let numberRegEx = /[^0-9]/;
     this.invalidCreditCard = numberRegEx.test(cardNumber) || cardNumber?.length < 16;
   }
+
 }
