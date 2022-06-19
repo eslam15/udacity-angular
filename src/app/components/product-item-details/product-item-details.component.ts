@@ -23,7 +23,10 @@ export class ProductItemDetailsComponent implements OnInit {
   addToCartBody: string = '';
   addToCartHeader: string = '';
 
-  constructor(private acivedRoute: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(
+    private acivedRoute: ActivatedRoute, 
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit(): void {
     const PRODUCT_ID = +this.acivedRoute?.snapshot?.params['id'];

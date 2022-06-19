@@ -1,9 +1,14 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductInterface } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products.service';
 import { AlertPopupComponent } from '../alert-popup/alert-popup.component';
-
 
 @Component({
   selector: 'app-product-item',
@@ -11,7 +16,8 @@ import { AlertPopupComponent } from '../alert-popup/alert-popup.component';
   styleUrls: ['./product-item.component.css'],
 })
 export class ProductItemComponent {
-  @ViewChild('addToCartAlert', { static: false }) addToCartAlert: AlertPopupComponent = {} as AlertPopupComponent;
+  @ViewChild('addToCartAlert', { static: false })
+  addToCartAlert: AlertPopupComponent = {} as AlertPopupComponent;
   @Output() onSelectProduct: EventEmitter<void> = new EventEmitter<void>();
   @Input() product: ProductInterface = {
     id: 0,
@@ -20,13 +26,16 @@ export class ProductItemComponent {
     url: '',
     description: '',
     amount: 0,
-    isSelected: false
+    isSelected: false,
   };
 
   addToCartBody: string = '';
   addToCartHeader: string = '';
 
-  constructor(private productsService: ProductsService, private router: Router) {}
+  constructor(
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
 
   getProductDetails(product: ProductInterface): void {
     this.router.navigateByUrl(`product-details/${product?.id}`);
@@ -43,5 +52,4 @@ export class ProductItemComponent {
     product.isSelected = !product.isSelected;
     this.onSelectProduct.emit();
   }
-
 }

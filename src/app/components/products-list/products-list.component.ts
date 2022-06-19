@@ -11,7 +11,7 @@ export class ProductsListComponent implements OnInit {
   productsList: ProductInterface[] = [];
   selectedProductsCount: number = 0;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.getProductsList();
@@ -30,5 +30,4 @@ export class ProductsListComponent implements OnInit {
   updateSelectedProductsCount(): void {
     this.selectedProductsCount = this.productsList.filter((el: ProductInterface) => el.isSelected).length;
   }
-
 }

@@ -24,16 +24,16 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     ProductItemDetailsComponent,
     CartComponent,
     ConfirmationComponent,
-    AlertPopupComponent
+    AlertPopupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [BsModalService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

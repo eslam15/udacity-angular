@@ -9,8 +9,6 @@ import { PaymentInterface } from 'src/app/interfaces/payment.interface';
 export class ConfirmationComponent implements OnInit {
   paymentDetails: PaymentInterface = { name: '', total: 0 };
 
-  constructor() {}
-
   ngOnInit(): void {
     this.paymentDetails = JSON.parse(localStorage.getItem('paymentDetails')!);
   }
@@ -18,5 +16,4 @@ export class ConfirmationComponent implements OnInit {
   clearPaymentDetails() {
     localStorage.setItem('paymentDetails', JSON.stringify({}));
   }
-
 }

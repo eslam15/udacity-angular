@@ -7,7 +7,7 @@ import { AlertPopupComponent } from '../alert-popup/alert-popup.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
   @ViewChild('removeFromCartAlert', { static: false }) removeFromCartAlert: AlertPopupComponent = {} as AlertPopupComponent;
@@ -19,12 +19,15 @@ export class CartComponent implements OnInit {
   paymentCard: string = '';
   removedFromCartBody: string = '';
   removedFromCartHeader: string = '';
-  confirmationUrl: string = '/confirmation'
+  confirmationUrl: string = '/confirmation';
   invalidName: boolean = false;
   invalidAddress: boolean = false;
   invalidCreditCard: boolean = false;
 
-  constructor(private productsService: ProductsService, private router: Router) { }
+  constructor(
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getCartItems();
@@ -48,7 +51,7 @@ export class CartComponent implements OnInit {
   removeFromCart(cartItem: ProductInterface, itemIndex: number): void {
     this.removedFromCartBody = `${cartItem?.name} has been removed from cart successfully!`;
     this.removedFromCartHeader = `Removed from cart`;
-    this.removeFromCartAlert.showModal(); 
+    this.removeFromCartAlert.showModal();
     this.cartItems.splice(itemIndex, 1);
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     this.resetCartTotal();
@@ -56,12 +59,13 @@ export class CartComponent implements OnInit {
 
   calculateCartTotal(): number {
     for (let product of this.cartItems) {
-      this.cartTotal += product.amount === 1 ? product.price : product.price * product.amount;
+      this.cartTotal +=
+        product.amount === 1 ? product.price : product.price * product.amount;
     }
     return this.cartTotal;
   }
 
-  resetCartTotal (): void {
+  resetCartTotal(): void {
     this.cartTotal = 0;
     if (this.cartItems?.length) {
       this.calculateCartTotal();
@@ -82,9 +86,9 @@ export class CartComponent implements OnInit {
     this.invalidAddress = address?.length < 6;
   }
 
-  validateCreditCard (cardNumber: string): void {
+  validateCreditCard(cardNumber: string): void {
     let numberRegEx = /[^0-9]/;
-    this.invalidCreditCard = numberRegEx.test(cardNumber) || cardNumber?.length < 16;
+    this.invalidCreditCard =
+      numberRegEx.test(cardNumber) || cardNumber?.length < 16;
   }
-
 }

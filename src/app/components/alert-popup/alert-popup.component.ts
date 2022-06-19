@@ -15,7 +15,7 @@ export class AlertPopupComponent {
     keyboard: true
   };
 
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService) {}
 
   showModal() {
     this.modalRef = this.modalService.show(this.alertModal, this.config);

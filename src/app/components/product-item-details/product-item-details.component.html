@@ -1,18 +1,37 @@
 <div class="product-details">
   <img [src]="productDetails?.url" [alt]="productDetails?.name">
   <div class="product-details__info">
-    <h6>{{productDetails?.name}}</h6>
-    <p class="card-text">{{productDetails?.description}}</p>
-    <span class="card-price">{{productDetails?.price | currency}}</span>
+    <h6>
+      {{productDetails?.name}}
+    </h6>
+    <p class="card-text">
+      {{productDetails?.description}}
+    </p>
+    <span class="card-price">
+      {{productDetails?.price | currency}}
+    </span>
     <div class="card-amount">
       <label for="productDetailsAmount" class="form-label">amount:</label>
-      <input type="number" class="form-control" id="productDetailsAmount" name="productDetailsAmount" placeholder="0" min="0" (click)="$event.stopPropagation()" [(ngModel)]="productDetails.amount">
+      <input 
+        type="number" 
+        class="form-control" 
+        id="productDetailsAmount" 
+        name="productDetailsAmount" 
+        placeholder="0" 
+        min="0" 
+        (click)="$event.stopPropagation()" 
+        [(ngModel)]="productDetails.amount">
     </div>
-    <button type="button" class="btn btn-warning" [disabled]="!productDetails?.amount" 
+    <button 
+      type="button" 
+      class="btn btn-warning" 
+      [disabled]="!productDetails?.amount" 
       (click)="$event.stopPropagation();addToCart(productDetails)">
       add to cart
     </button>
-    <a class="btn-back" routerLink="/">back to products list</a>
+    <a class="btn-back" routerLink="/">
+      back to products list
+    </a>
   </div>
 </div>
 
